@@ -39,6 +39,22 @@ services:
       - php
     volumes:
       - ./api/public:/srv/api/public:ro
+      
+  vulcain:
+    image: dunglas/vulcain
+    environment:
+      - CERT_FILE=/certs/localhost.crt
+      - KEY_FILE=/certs/localhost.key
+      - UPSTREAM=http://api
+    depends_on:
+      - api
+      - dev-tls
+    volumes:
+      - dev-certs:/certs:ro,nocopy
+    ports:
+      - target: 443
+        published: 8443
+        protocol: tcp
 
   db:
     image: postgres:12-alpine
