@@ -75,15 +75,15 @@ services:
     image: mongo
     restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_ROOT_USERNAME: "api-platform"
+      MONGO_INITDB_ROOT_PASSWORD: "!ChangeMe!"
+      MONGO_INITDB_DATABASE: api
     volumes:
       - db-data:/var/lib/postgresql/data:rw
     ports:
       - target: 27017
         published: 27017
         protocol: tcp
-      
 
   mongo-express:
     image: mongo-express
@@ -93,8 +93,8 @@ services:
         published: 8081
         protocol: tcp
     environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_ADMINUSERNAME: "api-platform"
+      ME_CONFIG_MONGODB_ADMINPASSWORD: "!ChangeMe!"
 
   client:
     build:
