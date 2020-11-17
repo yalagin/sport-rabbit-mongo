@@ -5,9 +5,21 @@ namespace App\Document;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use App\Controller\SendMsgAction;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     security="is_granted('IS_AUTHENTICATED_ANONYMOUSLY')",
+ *     collectionOperations={
+ *          "get",
+ *          "post",
+ *          "get-send-msg"= {
+ *             "method"="GET",
+ *             "path"="/live_scores/get-new",
+ *             "controller"=SendMsgAction::class,
+ *          }
+ *     }
+ * )
  *
  * @ODM\Document
  */

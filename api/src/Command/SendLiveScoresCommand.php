@@ -38,9 +38,8 @@ class SendLiveScoresCommand extends Command
         $io = new SymfonyStyle($input, $output);
 
 
-        $io->success('start bus');
         $this->bus->dispatch( new GetLiveScores());
-        $io->success('end it');
+        $io->success('msg sent');
 
         return Command::SUCCESS;
     }
