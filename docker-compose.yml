@@ -28,6 +28,32 @@ services:
       # if you develop on Linux, you may use a bind-mounted host directory instead
       # - ./api/var:/srv/api/var:rw
       - dev-certs:/certs:ro,nocopy
+      
+  consumer:
+    image: ${PHP_IMAGE:-quay.io/api-platform/php}
+    build:
+      context: ./api
+      target: api_platform_php
+      <<: *api-cache-from
+    command: bin/console messenger:consume
+    restart: on-failure
+    healthcheck:
+      test: [ 'CMD', 'ps', 'aux', '|', 'egrep', '"\d+:\d+ php bin/console messenger:consume"' ]
+      interval: 3s
+      timeout: 3s
+      retries: 3
+      start_period: 3s
+    # Comment out these volumes in production
+    depends_on:
+      - db
+      - mongo
+      - dev-tls
+    volumes:
+      - ./api:/srv/api:rw,cached
+      - ./api/docker/php/conf.d/api-platform.dev.ini:/usr/local/etc/php/conf.d/api-platform.ini
+      # if you develop on Linux, you may use a bind-mounted host directory instead
+      # - ./api/var:/srv/api/var:rw
+      - dev-certs:/certs:ro,nocopy
 
   api:
     build:
