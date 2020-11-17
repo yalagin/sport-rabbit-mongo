@@ -28,6 +28,8 @@ RUN set -eux; \
 		libzip-dev \
 		postgresql-dev \
 		zlib-dev \
+		rabbitmq-c-dev \
+		libressl-dev \
 	; \
 	\
 	docker-php-ext-configure zip; \
@@ -35,16 +37,20 @@ RUN set -eux; \
 		intl \
 		pdo_pgsql \
 		zip \
+		bcmath \
+		sockets \
 	; \
 	pecl install \
 		apcu-${APCU_VERSION} \
 		mongodb \
+		amqp \
 	; \
 	pecl clear-cache; \
 	docker-php-ext-enable \
 		apcu \
 		opcache \
 		mongodb \
+		amqp \
 	; \
 	\
 	runDeps="$( \
