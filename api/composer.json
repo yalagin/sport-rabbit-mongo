@@ -5,6 +5,7 @@
         "php": ">=7.4",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "ext-json": "*",
         "alcaeus/mongo-php-adapter": "^1.2",
         "api-platform/core": "^2.5",
         "composer/package-versions-deprecated": "^1.11",
