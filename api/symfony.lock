@@ -235,6 +235,9 @@
     "ralouphie/getallheaders": {
         "version": "3.0.3"
     },
+    "symfony/amqp-messenger": {
+        "version": "v5.1.8"
+    },
     "symfony/asset": {
         "version": "v5.1.3"
     },
@@ -285,6 +288,9 @@
     },
     "symfony/doctrine-bridge": {
         "version": "v5.1.3"
+    },
+    "symfony/doctrine-messenger": {
+        "version": "v5.1.8"
     },
     "symfony/dom-crawler": {
         "version": "v5.1.3"
@@ -377,6 +383,18 @@
             "config/packages/mercure.yaml"
         ]
     },
+    "symfony/messenger": {
+        "version": "4.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.3",
+            "ref": "e9a414b113ceadbf4e52abe37bf8f1b443f06ccb"
+        },
+        "files": [
+            "config/packages/messenger.yaml"
+        ]
+    },
     "symfony/monolog-bridge": {
         "version": "v5.1.3"
     },
@@ -433,6 +451,9 @@
     },
     "symfony/property-info": {
         "version": "v5.1.3"
+    },
+    "symfony/redis-messenger": {
+        "version": "v5.1.8"
     },
     "symfony/routing": {
         "version": "5.1",
