@@ -3,3 +3,5 @@
 /docker-compose.override.yml
 .idea/
 .docker/
+
+api/.DS_Store
