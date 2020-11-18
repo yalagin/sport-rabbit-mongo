@@ -25,6 +25,8 @@ class LiveScoreGroupBy
        $ids = [];
         /** @var LiveScores $score */
        foreach($collection as $score ){
+           //todo it will make json looks good but will brake web gui because too heavy load on browser
+//           $jsonContent = $serializer->normalize($score, null);
            $jsonContent = $serializer->serialize($score, 'json');
             if( isset(  $ids[$score->getLeagueId()])){
                 array_push($ids[$score->getLeagueId()],$jsonContent);
